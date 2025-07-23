@@ -1,0 +1,20 @@
+<?php
+
+$paciente = [
+    "nome" => 'João Silva',
+    "idade" => 35,
+    "email" => 'joao.silva@email.com',
+    "cpf" => '123.456.789-00'
+];
+
+// Para verificar se está correto:
+//print_r($paciente);
+
+// Ou exibir campos específicos:
+// echo "Nome: " . $paciente['nome'] . "\n";
+// echo "Idade: " . $paciente['idade'] . "\n";
+// echo "Email: " . $paciente['email'] . "\n";
+// echo "CPF: " . $paciente['cpf'] . "\n";
+
+echo "O paciente: " . $paciente['nome'] . ", tem " . $paciente['idade'] . " anos, seu email é " . $paciente['email'] . " e seu CPF é " . $paciente['cpf'] . ".\n";
+?>
