@@ -1,0 +1,21 @@
+{
+    "name": "estudos/lista08",
+    "description": "Projeto de estudos PHP",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Estudos\\Lista08\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "T-TheV",
+            "email": "djardim322@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

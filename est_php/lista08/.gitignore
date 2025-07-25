@@ -1,0 +1,5 @@
+# Ignorar arquivo com credenciais reais
+.env
+
+# Incluir apenas o modelo
+!.env.example
