@@ -1,3 +1,8 @@
+<?php
+use App\Models\Usuario;
+use App\Utils\Validador;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

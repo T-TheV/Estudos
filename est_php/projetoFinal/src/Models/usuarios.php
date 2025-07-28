@@ -1,5 +1,10 @@
 <?php
-
+namespace App\Models;
+use App\Utils\Validador;
+/**
+ * Classe Usuario
+ * Representa um usuário/profissional do sistema.
+ */
 class Usuario {
     private $nome;
     private $email;
@@ -22,7 +27,8 @@ class Usuario {
     public function verificarSenha($senha) {
         return password_verify($senha, $this->senha);
     }
-    public function salvar() {
-        $sql = "INSERT INTO profissionais (nome, email, senha) VALUES (:nome, :email, :senha)";
-        echo "Usuário {$this->nome} salvo com sucesso!";
+        public function salvar() {
+            $sql = "INSERT INTO profissionais (nome, email, senha) VALUES (:nome, :email, :senha)";
+            echo "Usuário {$this->nome} salvo com sucesso!";
+        }
     }
