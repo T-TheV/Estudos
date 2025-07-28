@@ -1,0 +1,17 @@
+{
+    "name": "david.jardim/exercicio10",
+    "autoload": {
+        "psr-4": {
+            "DavidJardim\\Exercicio10\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "T-TheV",
+            "email": "djardim322@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

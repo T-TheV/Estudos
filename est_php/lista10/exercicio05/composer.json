@@ -1,0 +1,17 @@
+{
+    "name": "david.jardim/exercicio05",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "T-TheV",
+            "email": "djardim322@gmail.com"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.5"
+    }
+}
