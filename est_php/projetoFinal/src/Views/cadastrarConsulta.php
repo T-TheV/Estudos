@@ -17,28 +17,35 @@ if (!$conexao_sucesso || $pdo === null) {
 
 // Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recebe os dados do formulário
     $id_paciente = $_POST['id_paciente'];
     $data_consulta = $_POST['data_consulta'];
     $status = $_POST['status'];
     try {
+        // ✅ Verifica se o paciente existe
+        $stmtCheck = $pdo->prepare("SELECT id FROM pacientes WHERE id = :id_paciente");
+        $stmtCheck->bindValue(':id_paciente', $id_paciente, PDO::PARAM_INT);
+        $stmtCheck->execute();
+        if ($stmtCheck->rowCount() === 0) { // Se o retorno do select for zero, o paciente não existe
+            throw new Exception("Paciente não encontrado! Informe um ID válido.");
+        }
+
         // Prepara a consulta SQL
         $stmt = $pdo->prepare("INSERT INTO consultas (id_paciente, data_consulta, status) VALUES (:id_paciente, :data_consulta, :status)");
-
-        // Associa os valores aos placeholders
         $stmt->bindValue(':id_paciente', $id_paciente);
         $stmt->bindValue(':data_consulta', $data_consulta);
         $stmt->bindValue(':status', $status);
 
         // Executa a consulta
         $stmt->execute();
-        
+
         // Exibe mensagem de sucesso
         echo "<p>Consulta inserida com sucesso!</p>";
         echo "<p>ID da nova consulta: " . $pdo->lastInsertId() . "</p>";
 
+    } catch (Exception $e) {
+        echo "<p style='color:red;'>Erro: " . htmlspecialchars($e->getMessage()) . "</p>";
     } catch (PDOException $e) {
-        echo "<p>Erro ao inserir consulta: " . $e->getMessage() . "</p>";
+        echo "<p style='color:red;'>Erro ao inserir consulta: " . htmlspecialchars($e->getMessage()) . "</p>";
     }
 }
 ?>
@@ -70,5 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Cadastrar Consulta</button>
     </form>
     <button><a href="listarConsultas.php">Voltar</a></button>
+</body>
+</html></body>    <button><a href="listarConsultas.php">Voltar</a></button>
 </body>
 </html>

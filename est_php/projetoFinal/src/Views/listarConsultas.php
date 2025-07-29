@@ -89,6 +89,7 @@ require_once '../Utils/Conexao.php';
             echo '<div class="alert alert-error">Erro: ' . htmlspecialchars($e->getMessage()) . '</div>';
         }
         ?>
+        <button><a href="listar_pacientes.php" class="btn btn-secondary">Voltar</a></button>
     </div>
 </body>
 </html>
