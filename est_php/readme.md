@@ -22,6 +22,8 @@ Construir uma base sólida em PHP, compreendendo conceitos fundamentais e aplica
 - [W3Schools PHP Tutorial](https://www.w3schools.com/php/)
 - [Canal TI](https://www.youtube.com/@canaltioficial)
 - [Curso em Vídeo - PHP](https://www.youtube.com/playlist?list=PLHz_AreHm4dkcVCk2Bn_fdVQ81Fkrh5kR) — Curso completo e didático em português
+- [Devmedia](https://www.devmedia.com.br/php-pdo-como-se-conectar-ao-banco-de-dados/37211)
+- [Laravel](https://laravel.com/docs/)
 
 ## 📝 Principais Conceitos PHP para Consulta Rápida
 
