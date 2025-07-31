@@ -3,7 +3,6 @@
 @section('titulo', 'Alertas')
 
 <div>
-    @foreach ($alerta as $item)
-        <x-alert type="{{ $item['tipo'] }}">{{ $item['mensagem'] }}</x-alert>
-    @endforeach
+        <x-alert type="sucesso" >Operação realizada com sucesso!</x-alert>
+        <x-alert type="erro">Ocorreu um erro ao processar sua solicitação.</x-alert>
 </div>

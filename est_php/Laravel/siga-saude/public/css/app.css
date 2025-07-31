@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+/* Alertas customizados */
+.alert {
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+.alert-success {
+    background-color: #38a169;
+    border: 1px solid #2f855a;
+}
+.alert-danger {
+    background-color: #e53e3e;
+    border: 1px solid #c53030;
+}
+.alert-warning {
+    background-color: #dd6b20;
+    border: 1px solid #c05621;
+}
+.alert-info {
+    background-color: #3182ce;
+    border: 1px solid #2b6cb0;
+}
