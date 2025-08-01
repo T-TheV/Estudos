@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+/* Removed invalid @source and @theme at-rules */
+
+
+/* Alertas customizados */
+.alert {
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+.alert-success {
+    background-color: #38a169;
+    border: 1px solid #2f855a;
+}
+.alert-danger {
+    background-color: #e53e3e;
+    border: 1px solid #c53030;
+}
+.alert-warning {
+    background-color: #dd6b20;
+    border: 1px solid #c05621;
+}
+.alert-info {
+    background-color: #3182ce;
+    border: 1px solid #2b6cb0;
+}
