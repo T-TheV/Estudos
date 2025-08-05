@@ -1,12 +1,17 @@
 <x-app-layout>
-<x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        {{ __('Criar Paciente') }}
-    </h2>
-    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Preencha as informações abaixo para criar um novo paciente.') }}
-    </p>
-</x-slot>
+    <x-slot name="header">
+        <div class="flex items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Cadastrar Paciente') }}
+            </h2>
+            <a href="{{ route('pacientes.index') }}" class="inline-block bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+                Voltar
+            </a>
+        </div>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {{ __('Preencha as informações abaixo para cadastrar um novo paciente.') }}
+        </p>
+    </x-slot>
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -36,7 +41,7 @@
                         <label for="endereco" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Endereço</label>
                         <input type="text" id="endereco" name="endereco" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600">
                     </div>
-                    <button type="submit" class="px-4 py-2 bg-green-600 text-black rounded-md hover:bg-green-700">Criar Paciente</button>
+                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Criar Paciente</button>
 
                 </form>
             </div>

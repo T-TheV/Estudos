@@ -1,8 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Consultas') }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Lista de Consultas') }}
+    </h2>
+        <div class="mt-4">
+            <a href="{{ route('consultas.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Cadastrar Nova Consulta
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -28,7 +33,7 @@
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->paciente->nome }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->medico->name }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->data_consulta }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y H:i') }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->status }}</td>
                                     </tr>
                                 @endforeach

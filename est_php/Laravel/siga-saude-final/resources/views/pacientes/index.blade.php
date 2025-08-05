@@ -33,10 +33,10 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->nome }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->cpf }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->telefone }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->data_nascimento }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($paciente->data_nascimento)->format('d/m/Y') }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->endereco ?? 'Não informado' }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap space-x-2">
-                                    <a href="{{ route('pacientes.show', $paciente->id) }}" class="text-green-600 hover:text-green-900">Ver</a>
+                                    <!-- <a href="{{ route('pacientes.show', $paciente->id) }}" class="text-green-600 hover:text-green-900">Ver</a> -->
                                     <a href="{{ route('pacientes.edit', $paciente->id) }}" class="text-blue-600 hover:text-blue-900">Editar</a>
                                     <form action="{{ route('pacientes.destroy', $paciente->id) }}" method="POST" class="inline">
                                         @csrf

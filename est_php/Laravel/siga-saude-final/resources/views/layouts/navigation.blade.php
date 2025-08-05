@@ -15,6 +15,31 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    
+                    <!-- Links para Recepcionistas e Administradores -->
+                    @if(Auth::user()->tipo === 'recepcionista' || Auth::user()->tipo === 'administrador')
+                        <x-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes.*')">
+                            {{ __('Pacientes') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('consultas.index')" :active="request()->routeIs('consultas.*')">
+                            {{ __('Consultas') }}
+                        </x-nav-link>
+                    @endif
+                    
+                    <!-- Links exclusivos para Administradores -->
+                    @if(Auth::user()->tipo === 'administrador')
+                        <x-nav-link href="/usuarios" :active="request()->routeIs('usuarios.*')">
+                            {{ __('Usuários') }}
+                        </x-nav-link>
+                    @endif
+                    
+                    <!-- Links para Médicos -->
+                    @if(Auth::user()->tipo === 'medico')
+                        <x-nav-link :href="route('consultas.medico')" :active="request()->routeIs('consultas.medico')">
+                            {{ __('Minhas Consultas') }}
+                        </x-nav-link>
+                    @endif
+                    
                 </div>
             </div>
 
@@ -70,6 +95,30 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            
+            <!-- Links para Recepcionistas e Administradores -->
+            @if(Auth::user()->tipo === 'recepcionista' || Auth::user()->tipo === 'administrador')
+                <x-responsive-nav-link :href="route('pacientes.index')" :active="request()->routeIs('pacientes.*')">
+                    {{ __('Pacientes') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('consultas.index')" :active="request()->routeIs('consultas.*')">
+                    {{ __('Consultas') }}
+                </x-responsive-nav-link>
+            @endif
+            
+            <!-- Links exclusivos para Administradores -->
+            @if(Auth::user()->tipo === 'administrador')
+                <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.*')">
+                    {{ __('Usuários') }}
+                </x-responsive-nav-link>
+            @endif
+            
+            <!-- Links para Médicos -->
+            @if(Auth::user()->tipo === 'medico')
+                <x-responsive-nav-link :href="route('consultas.medico')" :active="request()->routeIs('consultas.medico')">
+                    {{ __('Minhas Consultas') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

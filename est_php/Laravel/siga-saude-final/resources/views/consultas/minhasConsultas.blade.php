@@ -14,11 +14,28 @@
                     @else
                         <ul>
                             @foreach($consultas as $consulta)
-                                <li class="border-b border-gray-200 py-4">
-                                    <h3 class="font-semibold">{{ $consulta->paciente->nome }}</h3>
-                                    <p class="text-gray-600">{{ $consulta->data_consulta }}</p>
-                                    <p class="text-gray-600">{{ $consulta->status }}</p>
-                                </li>
+                                @if($consulta->data_consulta >= now()->startOfDay() && $consulta->data_consulta <= now()->addDays(7))
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data da Consulta</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->paciente->nome }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->data_consulta }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->status }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <a href="{{ route('consultas.show', $consulta->id) }}" class="text-blue-600 hover:text-blue-900">Ver Detalhes</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                @endif
                             @endforeach
                         </ul>
                     @endif

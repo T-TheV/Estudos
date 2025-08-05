@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 // Rotas protegidas para administradores
 Route::middleware(['auth', ChecarPapel::class . ':administrador'])->group(function () {
     // Exemplo: CRUD de usuários
-    Route::resource('usuarios', App\Http\Controllers\UsuarioController::class);
+    Route::resource('usuarios', UsuarioController::class);
     // Outras rotas de admin...
 });
 
@@ -35,11 +35,9 @@ Route::middleware(['auth', ChecarPapel::class . ':administrador,recepcionista'])
     // Exemplo: CRUD de pacientes
     Route::get('/pacientes/criarPaciente', [App\Http\Controllers\PacienteController::class, 'create'])->name('pacientes.criar');
     Route::post('/pacientes', [App\Http\Controllers\PacienteController::class, 'store'])->name('pacientes.store');
-    Route::resource('pacientes', PacienteController::class);
     // Exemplo: CRUD de consultas
     Route::get('/consultas/criarConsulta', [App\Http\Controllers\ConsultaController::class, 'create'])->name('consultas.criar');
     Route::post('/consultas', [App\Http\Controllers\ConsultaController::class, 'store'])->name('consultas.store');
-    Route::resource('consultas', ConsultaController::class);
     // Outras rotas de recepcionista...
 });
 
@@ -48,6 +46,15 @@ Route::middleware(['auth', ChecarPapel::class . ':medico'])->group(function () {
     // Exemplo: painel do médico
     Route::get('/minhas-consultas', [App\Http\Controllers\ConsultaController::class, 'minhasConsultas'])->name('consultas.medico');
     // Outras rotas de médico...
+});
+
+
+// Rotas para qualquer usuário autenticado
+Route::middleware('auth')->group(function () {
+    Route::resource('consultas', ConsultaController::class);
+    Route::resource('pacientes', PacienteController::class);
+
+    Route::get('/consultas/{id}', [App\Http\Controllers\ConsultaController::class, 'show'])->name('consultas.show');
 });
 
 require __DIR__.'/auth.php';

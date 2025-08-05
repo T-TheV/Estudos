@@ -13,7 +13,9 @@ class ConsultaController extends Controller
      */
     public function index()
     {
-        $consultas = \App\Models\Consulta::all();
+        $consultas = Consulta::with(['paciente', 'medico'])
+                            ->orderBy('data_consulta', 'desc')
+                            ->paginate(10);
         return view('consultas.index', compact('consultas'));
     }
 
@@ -60,7 +62,8 @@ class ConsultaController extends Controller
      */
     public function show(string $id)
     {
-
+        $consulta = Consulta::with(['paciente', 'medico'])->findOrFail($id);
+        return view('consultas.show', compact('consulta'));
     }
 
     /**
@@ -68,15 +71,30 @@ class ConsultaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('consultas.edit', [
+            'consulta' => Consulta::findOrFail($id),
+            'pacientes' => \App\Models\Paciente::all(),
+            'medicos' => \App\Models\User::where('tipo', 'medico')->get(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Consulta $consulta)
     {
-        //
+        $validated = $request->validate([
+            'paciente_id' => 'required|exists:pacientes,id',
+            'medico_id' => 'required|exists:users,id',
+            'data_consulta' => 'required|date',
+            'status' => 'required|in:agendada,realizada,cancelada',
+            'notas_consulta' => 'nullable|string',
+        ]);
+
+        $consulta->update($validated);
+
+        return redirect()->route('consultas.show', $consulta->id)
+                       ->with('success', 'Consulta atualizada com sucesso!');
     }
 
     /**

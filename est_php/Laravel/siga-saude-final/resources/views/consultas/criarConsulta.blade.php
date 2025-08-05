@@ -1,8 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Criar Agendamento de Consulta') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Criar Agendamento de Consulta') }}
+            </h2>
+            <a href="{{ route('consultas.index') }}" class="inline-block bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+                Voltar
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-6">
@@ -48,7 +53,7 @@
                 </div>
 
                 <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                         Agendar Consulta
                     </button>
                 </div>
