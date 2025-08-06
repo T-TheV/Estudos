@@ -83,6 +83,21 @@ class ConsultaController extends Controller
      */
     public function update(Request $request, Consulta $consulta)
     {
+        // Se for apenas para atualizar observações
+        if ($request->has('notas_consulta') && !$request->has('paciente_id')) {
+            $request->validate([
+                'notas_consulta' => 'nullable|string|max:1000',
+            ]);
+
+            $consulta->update([
+                'notas_consulta' => $request->notas_consulta,
+            ]);
+
+            return redirect()->route('consultas.show', $consulta->id)
+                           ->with('success', 'Observações salvas com sucesso!');
+        }
+
+        // Se for para atualizar a consulta completa
         $validated = $request->validate([
             'paciente_id' => 'required|exists:pacientes,id',
             'medico_id' => 'required|exists:users,id',

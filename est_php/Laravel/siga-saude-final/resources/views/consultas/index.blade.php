@@ -26,6 +26,7 @@
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Médico</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -35,6 +36,15 @@
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->medico->name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($consulta->data_consulta)->format('d/m/Y H:i') }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $consulta->status }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <a href="{{ route('consultas.show', $consulta->id) }}" class="text-blue-600 hover:text-blue-900">Ver Detalhes</a>
+                                            <a href="{{ route('consultas.edit', $consulta->id) }}" class="text-yellow-600 hover:text-yellow-900">Editar</a>
+                                            <form action="{{ route('consultas.destroy', $consulta->id) }}" method="POST" class="inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Tem certeza que deseja excluir esta consulta?')">Excluir</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

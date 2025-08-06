@@ -17,7 +17,7 @@
                     <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                            <!-- <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th> -->
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cpf</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
@@ -29,7 +29,7 @@
                     <tbody>
                         @forelse($pacientes as $paciente)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->id }}</td>
+                                <!-- <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->id }}</td> -->
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->nome }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->cpf }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $paciente->telefone }}</td>
