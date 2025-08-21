@@ -135,3 +135,49 @@ test('usuario autenticado pode listar pacientes', function () {
 });
 
 
+test('usuario autenticado pode ver um paciente especifico', function () {
+    $user = User::factory()->create();
+    Sanctum::actingAs($user);
+
+    // Cria um paciente para teste
+    $paciente = \App\Models\Paciente::factory()->create([
+        'nome' => 'Paciente Teste',
+        'cpf' => '123.456.789-00',
+        'data_nascimento' => '1990-01-01',
+        'telefone' => '123456789',
+        'endereco' => 'Rua Exemplo, 123, Cidade, Estado',
+    ]);
+
+    $response = $this->getJson("/api/v1/pacientes/{$paciente->id}");
+    
+    $response->assertStatus(200);
+    $response->assertJsonFragment(['nome' => 'Paciente Teste']);
+});
+
+test('usuario autenticado pode atualizar um paciente', function () {
+    $user = User::factory()->create();
+    Sanctum::actingAs($user);
+
+    // Cria um paciente para teste
+    $paciente = \App\Models\Paciente::factory()->create([
+        'nome' => 'Paciente Teste',
+        'cpf' => '123.456.789-00',
+        'data_nascimento' => '1990-01-01',
+        'telefone' => '123456789',
+        'endereco' => 'Rua Exemplo, 123, Cidade, Estado',
+    ]);
+
+    $updatedData = [
+        'nome' => 'Paciente Atualizado',
+        'cpf' => '123.456.789-00',
+        'data_nascimento' => '1990-01-01',
+        'telefone' => '987654321',
+        'endereco' => 'Rua Atualizada, 456, Cidade, Estado',
+    ];
+
+    $response = $this->putJson("/api/v1/pacientes/{$paciente->id}", $updatedData);
+    
+    $response->assertStatus(200);
+    $this->assertDatabaseHas('pacientes', ['nome' => 'Paciente Atualizado']);
+});
+ 
