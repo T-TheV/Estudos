@@ -1,10 +1,4 @@
-Com certeza! Entendido. O objetivo é manter a estrutura original, mas traduzir o conteúdo para um nível de "estagiário": claro, direto ao ponto e focado no que você precisa saber para começar a ser produtivo.
-
-Aqui está o guia, refeito com essa abordagem.
-
----
-
-### **Guia de Estudos para Projeto Laravel + Vue.js (Nível Estagiário)**
+### **Guia de Estudos para Projeto Laravel + Vue.js**
 
 Este guia é para você que já sabe o básico de PHP/Laravel e precisa entender como funciona um projeto moderno e bem estruturado. Vamos passar por cada ponto do guia original, explicando o "quê" e o "porquê" de cada tecnologia.
 
